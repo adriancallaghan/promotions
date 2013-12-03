@@ -18,21 +18,37 @@ return array(
                     'route'    => '/',
                     'defaults' => array(
                         'controller' => 'Application\Controller\Index',
-                        'action'     => 'index',
+                        'action'     => 'redirect',
                     ),
                 ),
-            ),           
+            ),
+            // http://promotions.localhost/uk/october2013/metro/
+            'promotions' => array(
+                //'type' => 'Zend\Mvc\Router\Http\Literal',
+                'type'    => 'segment',
+                'options' => array(
+                    'route'    => '/[:locale]/[:campaign]/[:page][/]',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Promotions',
+                        'action'     => 'index',
+                    ),
+                    'constraints' => array(
+                        'locale'     => '[a-zA-Z][a-zA-Z]',
+                    ),
+                ),
+            ),
+            
             
         ),
     ),
-    'navigation' => array(
+    /*'navigation' => array(
         'default' => array(
             array(
                 'label' => 'Home',
                 'route' => 'home',
             ),
         ),
-    ),
+    ),*/
     'service_manager' => array(
         'factories' => array(
             'navigation' => 'Zend\Navigation\Service\DefaultNavigationFactory',
@@ -61,7 +77,7 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'Application\Controller\Index' => 'Application\Controller\IndexController',
-            //'Application\Controller\Test' => 'Application\Controller\TestController',
+            'Application\Controller\Promotions' => 'Application\Controller\PromotionsController',
             //'Application\Controller\Object' => 'Application\Controller\ObjectController'
         ),
     ),
@@ -72,7 +88,7 @@ return array(
         'not_found_template'       => 'error/404',
         'exception_template'       => 'error/index',
         'template_map' => array(
-            'layout/layout'           => __DIR__ . '/../view/layout/layout.phtml',
+            'layout/layout'           => __DIR__ . '/../view/layout/plain.phtml',
             //'layout/header'           => __DIR__ . '/../view/layout/header.phtml',
             'application/index/index' => __DIR__ . '/../view/application/index/index.phtml',
             'error/404'               => __DIR__ . '/../view/error/404.phtml',

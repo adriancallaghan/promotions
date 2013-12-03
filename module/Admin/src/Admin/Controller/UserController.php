@@ -1,11 +1,4 @@
 <?php
-/**
- * Zend Framework (http://framework.zend.com/)
- *
- * @link      http://github.com/zendframework/ZendSkeletonApplication for the canonical source repository
- * @copyright Copyright (c) 2005-2013 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
- */
 
 namespace Admin\Controller;
 
@@ -33,7 +26,7 @@ class UserController extends AbstractActionController
         */
         
         return new ViewModel(array(
-            'title'     => 'Hi! '.$this->identity()->getFirstname(),
+            'title'     => 'Hi! ',//.$this->identity()->getFirstname(),
             'content'   => 'This is an example page and should be changed in the router',
             'flashMessages' => $this->flashMessenger()->getMessages()
         ));

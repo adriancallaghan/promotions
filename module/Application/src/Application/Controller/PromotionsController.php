@@ -12,13 +12,21 @@ namespace Application\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
-class IndexController extends AbstractActionController
+class PromotionsController extends AbstractActionController
 {
     
-    public function redirectAction()
+    public function indexAction()
     {
-        // tries to match the request
-        // based on referrer (did it come from a live site - which live site?)
-        // are these redirects that are defined in the database for campaigns?
+        // displays page based on
+        // /locale/campaign/promotion/
+        // passed from router
+        
+        // renders templates
+        $viewModel = new ViewModel();
+        $viewModel->setTemplate('application/promotions/two.phtml');
+         //echo $this->escapeHtml('article') 
+        return $viewModel;
+        
+        
     }
 }

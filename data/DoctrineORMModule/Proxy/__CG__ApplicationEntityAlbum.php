@@ -261,7 +261,7 @@ class Album extends \Application\Entity\Album implements \Doctrine\ORM\Proxy\Pro
     /**
      * {@inheritDoc}
      */
-    public function setCreated($created = NULL)
+    public function setCreated(\DateTime $created = NULL)
     {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreated', array($created));

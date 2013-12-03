@@ -133,13 +133,9 @@ return array(
                         'action' => 'logout',
                     ),
                 )
-            ),
-            'Users' => array(
-                'label' => 'Users',
-                'route' => 'admin/user'
-            ),
+            ),            
             'Albums' => array(
-                'label' => 'Albums',
+                'label' => 'Campaigns',
                 'route' => 'admin/album',
                 'pages' => array(
                     array(
@@ -160,7 +156,7 @@ return array(
                 )
             ),
             'Comments' => array(
-                'label' => 'Comments',
+                'label' => 'Promotions',
                 'route' => 'admin/comment',
                 'pages' => array(
                     array(
@@ -179,6 +175,10 @@ return array(
                         'action' => 'delete',
                     ),
                 )
+            ),
+            'Users' => array(
+                'label' => 'Users',
+                'route' => 'admin/user'
             ),
         ),
     ),

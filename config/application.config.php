@@ -8,8 +8,8 @@ return array(
         'DoctrineModule',
         'DoctrineORMModule',
         'Application',
-        //'Admin',
-        'Rest',              
+        'Admin',
+        //'Rest',              
         'DluTwBootstrap',
         //'DluTwBootstrapDemo', // url is /tw-bootstrap-demo        
     ),
