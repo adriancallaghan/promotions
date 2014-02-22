@@ -23,11 +23,33 @@ class Module
 {
     public function onBootstrap(MvcEvent $e)
     {
-        $eventManager        = $e->getApplication()->getEventManager();
-        $moduleRouteListener = new ModuleRouteListener();
+        $app            = $e->getApplication();
+        $eventManager   = $app->getEventManager();
+        $request        = $e->getRequest();
+        $sm             = $app->getServiceManager();
+        $em             = $sm->get('Doctrine\ORM\EntityManager');
+        $routesEntity   = $em->getRepository('Application\Entity\Routes');
+        
+        $moduleRouteListener    = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
-    }
+        
+        $route          = $routesEntity->findOneBy(array(
+                        'route'  => $request->getUri()->getPath(),
+                        'domain' => $request->getUri()->getHost()
+                        ));
+        
+        if ($route){
+            die
+            // trigger controller
+            $route->template;
+            //$e->setRequest($request);
+            //$eventManager->setEventClass($route->template); 
+        }
 
+
+    }
+    
+    
     public function getConfig()
     {
         return include __DIR__ . '/config/module.config.php';

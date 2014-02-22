@@ -12,28 +12,30 @@ namespace Application;
 return array(
     'router' => array(
         'routes' => array(
+            
+            // here purely to make the admin nav work
             'home' => array(
                 'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => array(
-                    'route'    => '/',
+                    'route'    => '', // '/'
                     'defaults' => array(
                         'controller' => 'Application\Controller\Index',
                         'action'     => 'redirect',
                     ),
                 ),
             ),
-            // http://promotions.localhost/uk/october2013/metro/
+
             'promotions' => array(
                 //'type' => 'Zend\Mvc\Router\Http\Literal',
                 'type'    => 'segment',
                 'options' => array(
-                    'route'    => '/[:locale]/[:campaign]/[:page][/]',
+                    'route'    => '/2x4/:promotion[/]',
                     'defaults' => array(
                         'controller' => 'Application\Controller\Promotions',
                         'action'     => 'index',
                     ),
                     'constraints' => array(
-                        'locale'     => '[a-zA-Z][a-zA-Z]',
+                        //'promotion'     => '[a-zA-Z]',
                     ),
                 ),
             ),
